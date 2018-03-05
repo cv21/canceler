@@ -1,9 +1,20 @@
+# InverseFlow
+
 
 # Testing
-First of all install [moq](https://github.com/matryer/moq) and regenerate mocks.
+
+## Running tests
+```
+make tests
+```
+
+## Mock generation
+Install [moq](https://github.com/matryer/moq) and use `make gen` makefile command
 ```
 go get github.com/matryer/moq
 make gen
 ```
 
 # Examples
+
+

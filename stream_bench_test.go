@@ -1,18 +1,11 @@
-package canceler
+package inverseflow_test
 
-import "testing"
-
-type testCanceler struct {
-	v int
-}
-
-func (t testCanceler) Cancel() error {
-	t.v++
-	return nil
-}
+import (
+	"testing"
+)
 
 func BenchmarkCancelCanceler(b *testing.B) {
-	canceler := NewPool(testCanceler{})
+	canceler := NewStream(addFunc(0))
 	for n := 0; n < b.N; n++ {
 		canceler.Cancel()
 	}
@@ -20,9 +13,7 @@ func BenchmarkCancelCanceler(b *testing.B) {
 
 func BenchmarkCancelNative(b *testing.B) {
 	v := uint(0)
-
-	f := addFunc(&v)
-
+	f := addPtrFunc(&v)
 	for n := 0; n < b.N; n++ {
 		f()
 	}
