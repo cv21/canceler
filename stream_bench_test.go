@@ -4,14 +4,14 @@ import (
 	"testing"
 )
 
-func BenchmarkCancelCanceler(b *testing.B) {
-	canceler := NewStream(addFunc(0))
+func BenchmarkInverseStream(b *testing.B) {
+	s := NewStream(addFunc(0))
 	for n := 0; n < b.N; n++ {
-		canceler.Cancel()
+		s.Inverse()
 	}
 }
 
-func BenchmarkCancelNative(b *testing.B) {
+func BenchmarkInverseNative(b *testing.B) {
 	f := addFunc(0)
 	for n := 0; n < b.N; n++ {
 		f()
