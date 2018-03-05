@@ -1,9 +1,13 @@
+# InverseFlow
+With InverseFlow you can elegant rollback your flow.
 
 # Testing
-First of all install [moq](https://github.com/matryer/moq) and regenerate mocks.
+
+## Running tests
 ```
-go get github.com/matryer/moq
-make gen
+make test
 ```
 
 # Examples
+
+##

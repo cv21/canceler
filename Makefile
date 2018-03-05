@@ -1,8 +1,8 @@
 gen:
-	go generate ./canceler
+	go generate .
 
-tests:
-	go test ./canceler
+test:
+	go test .
 
 bench:
-	go test ./canceler -bench=.
+	go test . -bench=.
