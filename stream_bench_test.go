@@ -1,4 +1,4 @@
-package inverseflow_test
+package inverseflow
 
 import (
 	"testing"
@@ -12,8 +12,7 @@ func BenchmarkCancelCanceler(b *testing.B) {
 }
 
 func BenchmarkCancelNative(b *testing.B) {
-	v := uint(0)
-	f := addPtrFunc(&v)
+	f := addFunc(0)
 	for n := 0; n < b.N; n++ {
 		f()
 	}

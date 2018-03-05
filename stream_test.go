@@ -1,4 +1,4 @@
-package inverseflow_test
+package inverseflow
 
 import (
 	"testing"

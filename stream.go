@@ -9,17 +9,17 @@ type stream struct {
 	cancelIndex Index
 }
 
-// Func is a main function type of inverseflow.
-// Elements with such type calls when you call stream's Cancel method.
+// Func it is so called cancel func which calls when you call stream's Cancel method.
 type Func func() error
 
-// Index is a internal type for comfortable usage of indexes outside of the inverseflow.
+// It is uses for indexing Func inside stream.
 type Index uint32
 
 var ErrFuncNotFound = errors.New("function not found")
 
 // Creates new inverseflow stream.
-// Could recieve inverseflow Func list for rapid initialization.
+// Could receive inverseflow Func list for rapid initialization.
+// Initialized Funcs in this way not provides its indexes, so you could not remove them from stream.
 func NewStream(fs ...Func) *stream {
 	p := &stream{funcs: make(map[Index]Func)}
 	for _, f := range fs {
@@ -51,7 +51,7 @@ func (p *stream) Remove(i Index) error {
 
 // Cancels inverseflow stream.
 // Stream could be canceled iteratively by handling errors and call Cancel method again.
-// Stream can hold a cancel progress.
+// Stream holds a cancel progress.
 func (p *stream) Cancel() error {
 	var err error
 	for ; p.cancelIndex < p.insertIndex; p.cancelIndex++ {
