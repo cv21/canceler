@@ -63,5 +63,7 @@ func DoSomething(db *gorm.DB, fileSvc FileService) error {
 		// there stream.Inverse() will rollback transaction and delete file
 		return util.Err(stream.Inverse(), err)
 	}
+
+	return nil
 }
 ```
