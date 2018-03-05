@@ -3,19 +3,19 @@ With InverseFlow you can elegant rollback your flow.
 
 # Testing
 
-## Running tests
+### Running tests
 ```
 make test
 ```
 
-## Running bench
+### Running benchmark
 ```
 make bench
 ```
 
 # Performance
 
-## Benchmark results
+### Benchmark results
 
 ```
 BenchmarkInverseStream-4        1000000000               2.99 ns/op
