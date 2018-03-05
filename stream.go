@@ -49,10 +49,10 @@ func (p *stream) Remove(i Index) error {
 	return nil
 }
 
-// Cancels inverseflow stream.
-// Stream could be canceled iteratively by handling errors and call Cancel method again.
-// Stream holds a cancel progress.
-func (p *stream) Cancel() error {
+// Inverse inverseflow stream.
+// If error occured, stream can inverse iteratively by handling errors and call Inverse method again.
+// Stream holds a inverse progress.
+func (p *stream) Inverse() error {
 	var err error
 	for ; p.cancelIndex < p.insertIndex; p.cancelIndex++ {
 		if v, ok := p.funcs[p.cancelIndex]; ok {

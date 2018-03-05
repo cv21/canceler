@@ -18,12 +18,12 @@ func TestAdd(t *testing.T) {
 	assert.Equal(t, len(p.funcs), 3, "inverseflow slice length is right")
 }
 
-func TestCancel(t *testing.T) {
+func TestInverse(t *testing.T) {
 	var cnt uint
 	p := NewStream(addPtrFunc(&cnt))
 	p.Add(addPtrFunc(&cnt))
 	p.Add(addPtrFunc(&cnt))
-	p.Cancel()
+	p.Inverse()
 	assert.Equal(t, cnt, uint(3), "inverseflow called all functions")
 }
 
