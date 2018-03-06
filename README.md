@@ -65,23 +65,20 @@ func DoSomething(db *gorm.DB, fileSvc FileService) error {
 
 # Testing
 
-### Running tests
-```
-make test
-```
-
-# Dependencies
-
 ### Install dependencies
 
 Using [dep](https://github.com/golang/dep) you can install dependencies. It is necessary only for testing.
 In usual case of usage the library you no need to install any dependency.
-
 ```
 make dep
 ```
 
-### Running benchmark
+### Run tests
+```
+make test
+```
+
+### Run benchmark
 ```
 make bench
 ```
