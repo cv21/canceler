@@ -39,20 +39,20 @@ func DoSomething(db *gorm.DB, fileSvc FileService) error {
 
 	// ...
 
-    // Create file in file service.
+	// Create file in file service.
 	file, err := fileSvc.Create("name", data)
 	if err != nil {
 		// There stream.Inverse() will call InverseCreateFile which rollback tx
 		return util.Err(stream.Inverse(), err)
 	}
 
-    // Add InverseCreateFile to stream.
-    // If stream will be reversed, InverseBeginTransaction and InverseBeginTransaction will be called.
+	// Add InverseCreateFile to stream.
+	// If stream will be reversed, InverseBeginTransaction and InverseBeginTransaction will be called.
 	stream.Add(InverseCreateFile(fileSvc, file))
 
 	// ...
 
-    // For example, buildSomeErr() will produce error.
+	// For example, buildSomeErr() will produce error.
 	err = buildSomeErr()
 	if err != nil {
 		// There stream.Inverse() will call InverseBeginTransaction and after that InverseCreateFile.
@@ -94,5 +94,7 @@ make bench
 BenchmarkInverseStream-4        1000000000               2.99 ns/op
 BenchmarkInverseNative-4        1000000000               2.33 ns/op
 ```
+
+---
 
 Project is under development and is open for any proposals.
