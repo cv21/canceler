@@ -42,7 +42,7 @@ func DoSomething(db *gorm.DB, fileSvc FileService) error {
 	// Create file in file service.
 	file, err := fileSvc.Create("name", data)
 	if err != nil {
-		// There stream.Inverse() will call InverseCreateFile which rollback tx
+		// There stream.Inverse() will call InverseCreateFile which rollback tx.
 		return util.Err(stream.Inverse(), err)
 	}
 
