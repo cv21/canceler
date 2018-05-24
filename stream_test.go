@@ -6,18 +6,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNewPool(t *testing.T) {
-	p := NewStream(addFunc(0), addFunc(0))
-	assert.Equal(t, len(p.funcs), 2, "inverseflow slice length is right")
-}
-
-func TestAdd(t *testing.T) {
-	p := NewStream(addFunc(0))
-	p.Add(addFunc(0))
-	p.Add(addFunc(0))
-	assert.Equal(t, len(p.funcs), 3, "inverseflow slice length is right")
-}
-
 func TestInverse(t *testing.T) {
 	var cnt uint
 	p := NewStream(addPtrFunc(&cnt))

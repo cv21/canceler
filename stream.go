@@ -2,6 +2,12 @@ package inverse
 
 import "errors"
 
+type Stream interface {
+	Add(f Func) Index
+	Remove(i Index) error
+	Inverse() error
+}
+
 // stream holds a slice of Func and indexes for properly iterating.
 type stream struct {
 	funcs       map[Index]Func
@@ -20,7 +26,7 @@ var ErrFuncNotFound = errors.New("function not found")
 // Creates new inverseflow stream.
 // Could receive inverseflow Func list for rapid initialization.
 // Initialized Funcs in this way not provides its indexes, so you could not remove them from stream.
-func NewStream(fs ...Func) *stream {
+func NewStream(fs ...Func) Stream {
 	p := &stream{funcs: make(map[Index]Func)}
 	for _, f := range fs {
 		p.Add(f)
